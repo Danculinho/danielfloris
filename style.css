@@ -1,0 +1,132 @@
+:root {
+  --pink: #ff4f93;
+  --light-pink: #ffd6e8;
+  --bg-1: #ffe9f3;
+  --bg-2: #fff7fb;
+  --text: #47223a;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  font-family: "Poppins", "Segoe UI", sans-serif;
+  background: linear-gradient(155deg, var(--bg-1), var(--bg-2));
+  color: var(--text);
+  display: grid;
+  place-items: center;
+  padding: 1.25rem;
+}
+
+.card {
+  width: min(100%, 460px);
+  background: rgba(255, 255, 255, 0.82);
+  border: 2px solid #ffd0e3;
+  border-radius: 24px;
+  padding: 1.5rem;
+  text-align: center;
+  box-shadow: 0 12px 26px rgba(255, 79, 147, 0.18);
+  position: relative;
+  overflow: hidden;
+}
+
+.kicker {
+  margin: 0;
+  font-size: 0.86rem;
+  color: #b04f7f;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+h1 {
+  margin: 0.45rem 0 0.5rem;
+  font-size: clamp(1.6rem, 5vw, 2rem);
+}
+
+.subtitle {
+  margin: 0 0 1.1rem;
+  color: #6a3e56;
+  font-size: 0.98rem;
+}
+
+.button-zone {
+  position: relative;
+  min-height: 170px;
+  margin-top: 0.25rem;
+}
+
+.btn {
+  border: 0;
+  border-radius: 999px;
+  padding: 0.82rem 1.5rem;
+  font-size: 1.02rem;
+  font-weight: 700;
+  cursor: pointer;
+  touch-action: manipulation;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.btn:active {
+  transform: scale(0.96);
+}
+
+.yes {
+  background: var(--pink);
+  color: #fff;
+  box-shadow: 0 8px 16px rgba(255, 79, 147, 0.35);
+  position: relative;
+  z-index: 2;
+}
+
+.yes:hover {
+  transform: translateY(-2px);
+}
+
+.no {
+  background: #fff;
+  border: 2px solid #ffc2de;
+  color: #b55584;
+  position: absolute;
+  left: 60%;
+  top: 56%;
+  transform: translate(-50%, -50%);
+  z-index: 3;
+}
+
+.message {
+  margin: 0.8rem 0 0;
+  min-height: 2.8rem;
+  font-weight: 600;
+  color: #a32663;
+}
+
+.hearts::before,
+.hearts::after {
+  content: "💗 💕 💓";
+  position: absolute;
+  bottom: -18px;
+  font-size: 1.2rem;
+  opacity: 0.22;
+}
+
+.hearts::before {
+  left: 10px;
+}
+
+.hearts::after {
+  right: 10px;
+}
+
+@media (max-width: 420px) {
+  .card {
+    padding: 1.25rem 1rem;
+  }
+
+  .btn {
+    font-size: 0.96rem;
+    padding: 0.76rem 1.2rem;
+  }
+}
