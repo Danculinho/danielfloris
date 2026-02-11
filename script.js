@@ -3,8 +3,10 @@ const noBtn = document.getElementById("noBtn");
 const zone = document.getElementById("buttonZone");
 const message = document.getElementById("message");
 const card = document.getElementById("card");
+const ytPlayer = document.getElementById("ytPlayer");
 
 let noScale = 1;
+let songStarted = false;
 
 function setNoRandomPosition() {
   const zoneRect = zone.getBoundingClientRect();
@@ -55,6 +57,16 @@ function addFloatingHearts() {
   }
 }
 
+function startSong() {
+  if (songStarted) {
+    return;
+  }
+
+  ytPlayer.src =
+    "https://www.youtube.com/embed/pwPxqYy__Ao?autoplay=1&rel=0&modestbranding=1&playsinline=1";
+  songStarted = true;
+}
+
 function evadeNoButton(event) {
   event.preventDefault();
   noScale = Math.max(0.45, noScale - 0.07);
@@ -80,6 +92,7 @@ yesBtn.addEventListener("click", () => {
   card.classList.remove("celebrate");
   requestAnimationFrame(() => card.classList.add("celebrate"));
   addFloatingHearts();
+  startSong();
 });
 
 noBtn.addEventListener("pointerenter", evadeNoButton);

@@ -193,6 +193,38 @@ h1 {
   color: #a32663;
 }
 
+
+.music-player {
+  margin-top: 0.45rem;
+  padding: 0.65rem;
+  border-radius: 16px;
+  background: #fff4fa;
+  border: 1px solid #ffd0e4;
+}
+
+.music-title {
+  margin: 0 0 0.45rem;
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: #9a3b6e;
+}
+
+.music-player iframe {
+  width: 100%;
+  border: 0;
+  border-radius: 12px;
+  height: clamp(90px, 18vw, 130px);
+  background: #ffe8f4;
+}
+
+.music-link {
+  display: inline-block;
+  margin-top: 0.5rem;
+  color: #b12f6f;
+  font-size: 0.8rem;
+  font-weight: 600;
+}
+
 .hearts::before,
 .hearts::after {
   content: "💗 💕 💓";
@@ -301,5 +333,15 @@ h1 {
 
   .hero-meme figcaption {
     font-size: 0.78rem;
+  }
+
+
+  .music-player iframe {
+    height: 92px;
+  }
+
+  .music-title,
+  .music-link {
+    font-size: 0.76rem;
   }
 }
