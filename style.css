@@ -19,11 +19,54 @@ body {
   display: grid;
   place-items: center;
   padding: 1.25rem;
+  overflow-x: hidden;
+}
+
+.bg-bubbles {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.bg-bubbles span {
+  position: absolute;
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 30% 30%, #ffffffa8, #ffc0df7a);
+  animation: floatUp 14s linear infinite;
+}
+
+.bg-bubbles span:nth-child(1) {
+  left: 8%;
+  bottom: -140px;
+}
+.bg-bubbles span:nth-child(2) {
+  left: 28%;
+  bottom: -220px;
+  width: 90px;
+  height: 90px;
+  animation-duration: 11s;
+}
+.bg-bubbles span:nth-child(3) {
+  right: 22%;
+  bottom: -180px;
+  width: 105px;
+  height: 105px;
+  animation-duration: 13s;
+}
+.bg-bubbles span:nth-child(4) {
+  right: 5%;
+  bottom: -260px;
+  width: 70px;
+  height: 70px;
+  animation-duration: 10s;
 }
 
 .card {
-  width: min(100%, 460px);
-  background: rgba(255, 255, 255, 0.82);
+  width: min(100%, 500px);
+  background: rgba(255, 255, 255, 0.86);
   border: 2px solid #ffd0e3;
   border-radius: 24px;
   padding: 1.5rem;
@@ -31,6 +74,8 @@ body {
   box-shadow: 0 12px 26px rgba(255, 79, 147, 0.18);
   position: relative;
   overflow: hidden;
+  z-index: 1;
+  animation: popIn 0.7s ease;
 }
 
 .kicker {
@@ -44,12 +89,68 @@ body {
 h1 {
   margin: 0.45rem 0 0.5rem;
   font-size: clamp(1.6rem, 5vw, 2rem);
+  animation: gentleBounce 3s ease-in-out infinite;
 }
 
 .subtitle {
-  margin: 0 0 1.1rem;
+  margin: 0;
   color: #6a3e56;
   font-size: 0.98rem;
+}
+
+.motto {
+  margin: 0.7rem auto 1rem;
+  width: fit-content;
+  font-size: 0.88rem;
+  color: #7a3e63;
+  background: #ffe6f2;
+  border: 1px solid #ffc7e0;
+  padding: 0.4rem 0.7rem;
+  border-radius: 999px;
+}
+
+.meme-grid {
+  display: grid;
+  gap: 0.8rem;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  margin: 0 0 1rem;
+}
+
+.meme-card {
+  margin: 0;
+  border-radius: 16px;
+  overflow: hidden;
+  background: #fff;
+  border: 1px solid #ffd2e6;
+  box-shadow: 0 6px 14px rgba(255, 79, 147, 0.16);
+  transform: rotate(calc((var(--tilt, 0)) * 1deg));
+  transition: transform 0.25s ease;
+}
+
+.meme-card:nth-child(1) {
+  --tilt: -1;
+}
+
+.meme-card:nth-child(2) {
+  --tilt: 1;
+}
+
+.meme-card:hover {
+  transform: rotate(0deg) translateY(-3px);
+}
+
+.meme-card img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+}
+
+.meme-card figcaption {
+  padding: 0.45rem 0.5rem 0.5rem;
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: #8f3a6c;
 }
 
 .button-zone {
@@ -79,6 +180,7 @@ h1 {
   box-shadow: 0 8px 16px rgba(255, 79, 147, 0.35);
   position: relative;
   z-index: 2;
+  animation: pulse 1.8s infinite;
 }
 
 .yes:hover {
@@ -94,6 +196,10 @@ h1 {
   top: 56%;
   transform: translate(-50%, -50%);
   z-index: 3;
+}
+
+.no.is-escaping {
+  animation: wiggle 0.28s ease;
 }
 
 .message {
@@ -120,6 +226,77 @@ h1 {
   right: 10px;
 }
 
+.card.celebrate {
+  animation: celebrate 0.8s ease;
+}
+
+@keyframes floatUp {
+  from {
+    transform: translateY(0) scale(1);
+    opacity: 0.7;
+  }
+  to {
+    transform: translateY(-115vh) scale(1.28);
+    opacity: 0;
+  }
+}
+
+@keyframes popIn {
+  from {
+    opacity: 0;
+    transform: translateY(14px) scale(0.96);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes pulse {
+  0%,
+  100% {
+    box-shadow: 0 8px 16px rgba(255, 79, 147, 0.35);
+  }
+  50% {
+    box-shadow: 0 12px 24px rgba(255, 79, 147, 0.58);
+  }
+}
+
+@keyframes gentleBounce {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-2px);
+  }
+}
+
+@keyframes wiggle {
+  0%,
+  100% {
+    transform: scale(1) rotate(0deg);
+  }
+  25% {
+    transform: scale(0.96) rotate(-4deg);
+  }
+  75% {
+    transform: scale(0.96) rotate(4deg);
+  }
+}
+
+@keyframes celebrate {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.02);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
 @media (max-width: 420px) {
   .card {
     padding: 1.25rem 1rem;
@@ -128,5 +305,13 @@ h1 {
   .btn {
     font-size: 0.96rem;
     padding: 0.76rem 1.2rem;
+  }
+
+  .meme-grid {
+    gap: 0.6rem;
+  }
+
+  .meme-card figcaption {
+    font-size: 0.75rem;
   }
 }
