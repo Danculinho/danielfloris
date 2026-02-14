@@ -1,0 +1,347 @@
+:root {
+  --pink: #ff4f93;
+  --light-pink: #ffd6e8;
+  --bg-1: #ffe9f3;
+  --bg-2: #fff7fb;
+  --text: #47223a;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  font-family: "Poppins", "Segoe UI", sans-serif;
+  background: linear-gradient(155deg, var(--bg-1), var(--bg-2));
+  color: var(--text);
+  display: grid;
+  place-items: center;
+  padding: 1.25rem;
+  overflow-x: hidden;
+}
+
+.bg-bubbles {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.bg-bubbles span {
+  position: absolute;
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 30% 30%, #ffffffa8, #ffc0df7a);
+  animation: floatUp 14s linear infinite;
+}
+
+.bg-bubbles span:nth-child(1) {
+  left: 8%;
+  bottom: -140px;
+}
+.bg-bubbles span:nth-child(2) {
+  left: 28%;
+  bottom: -220px;
+  width: 90px;
+  height: 90px;
+  animation-duration: 11s;
+}
+.bg-bubbles span:nth-child(3) {
+  right: 22%;
+  bottom: -180px;
+  width: 105px;
+  height: 105px;
+  animation-duration: 13s;
+}
+.bg-bubbles span:nth-child(4) {
+  right: 5%;
+  bottom: -260px;
+  width: 70px;
+  height: 70px;
+  animation-duration: 10s;
+}
+
+.card {
+  width: min(100%, 500px);
+  background: rgba(255, 255, 255, 0.86);
+  border: 2px solid #ffd0e3;
+  border-radius: 24px;
+  padding: 1.5rem;
+  text-align: center;
+  box-shadow: 0 12px 26px rgba(255, 79, 147, 0.18);
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+  animation: popIn 0.7s ease;
+}
+
+.kicker {
+  margin: 0;
+  font-size: 0.86rem;
+  color: #b04f7f;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+h1 {
+  margin: 0.45rem 0 0.5rem;
+  font-size: clamp(1.6rem, 5vw, 2rem);
+  animation: gentleBounce 3s ease-in-out infinite;
+}
+
+.subtitle {
+  margin: 0;
+  color: #6a3e56;
+  font-size: 0.98rem;
+}
+
+.motto {
+  margin: 0.7rem auto 1rem;
+  width: fit-content;
+  font-size: 0.88rem;
+  color: #7a3e63;
+  background: #ffe6f2;
+  border: 1px solid #ffc7e0;
+  padding: 0.4rem 0.7rem;
+  border-radius: 999px;
+}
+
+.hero-meme {
+  margin: 0 auto 1rem;
+  width: min(100%, 420px);
+  background: #fff;
+  border: 1px solid #ffd2e6;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 8px 18px rgba(255, 79, 147, 0.16);
+  animation: popIn 0.85s ease;
+}
+
+.hero-meme img {
+  display: block;
+  width: 100%;
+  height: clamp(180px, 32vh, 300px);
+  object-fit: contain;
+  object-position: center;
+  background: linear-gradient(180deg, #ffeaf4, #fff9fc);
+}
+
+.hero-meme figcaption {
+  margin: 0;
+  padding: 0.5rem 0.7rem 0.65rem;
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: #8f3a6c;
+}
+
+.button-zone {
+  position: relative;
+  min-height: 170px;
+  margin-top: 0.25rem;
+}
+
+.btn {
+  border: 0;
+  border-radius: 999px;
+  padding: 0.82rem 1.5rem;
+  font-size: 1.02rem;
+  font-weight: 700;
+  cursor: pointer;
+  touch-action: manipulation;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.btn:active {
+  transform: scale(0.96);
+}
+
+.yes {
+  background: var(--pink);
+  color: #fff;
+  box-shadow: 0 8px 16px rgba(255, 79, 147, 0.35);
+  position: relative;
+  z-index: 2;
+  animation: pulse 1.8s infinite;
+}
+
+.yes:hover {
+  transform: translateY(-2px);
+}
+
+.no {
+  background: #fff;
+  border: 2px solid #ffc2de;
+  color: #b55584;
+  position: absolute;
+  left: 60%;
+  top: 56%;
+  transform: translate(-50%, -50%);
+  z-index: 3;
+}
+
+.no.is-escaping {
+  animation: wiggle 0.28s ease;
+}
+
+.message {
+  margin: 0.8rem 0 0;
+  min-height: 2.8rem;
+  font-weight: 600;
+  color: #a32663;
+}
+
+
+.music-player {
+  margin-top: 0.45rem;
+  padding: 0.65rem;
+  border-radius: 16px;
+  background: #fff4fa;
+  border: 1px solid #ffd0e4;
+}
+
+.music-title {
+  margin: 0 0 0.45rem;
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: #9a3b6e;
+}
+
+.music-player iframe {
+  width: 100%;
+  border: 0;
+  border-radius: 12px;
+  height: clamp(90px, 18vw, 130px);
+  background: #ffe8f4;
+}
+
+.music-link {
+  display: inline-block;
+  margin-top: 0.5rem;
+  color: #b12f6f;
+  font-size: 0.8rem;
+  font-weight: 600;
+}
+
+.hearts::before,
+.hearts::after {
+  content: "💗 💕 💓";
+  position: absolute;
+  bottom: -18px;
+  font-size: 1.2rem;
+  opacity: 0.22;
+}
+
+.hearts::before {
+  left: 10px;
+}
+
+.hearts::after {
+  right: 10px;
+}
+
+.card.celebrate {
+  animation: celebrate 0.8s ease;
+}
+
+@keyframes floatUp {
+  from {
+    transform: translateY(0) scale(1);
+    opacity: 0.7;
+  }
+  to {
+    transform: translateY(-115vh) scale(1.28);
+    opacity: 0;
+  }
+}
+
+@keyframes popIn {
+  from {
+    opacity: 0;
+    transform: translateY(14px) scale(0.96);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes pulse {
+  0%,
+  100% {
+    box-shadow: 0 8px 16px rgba(255, 79, 147, 0.35);
+  }
+  50% {
+    box-shadow: 0 12px 24px rgba(255, 79, 147, 0.58);
+  }
+}
+
+@keyframes gentleBounce {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-2px);
+  }
+}
+
+@keyframes wiggle {
+  0%,
+  100% {
+    transform: scale(1) rotate(0deg);
+  }
+  25% {
+    transform: scale(0.96) rotate(-4deg);
+  }
+  75% {
+    transform: scale(0.96) rotate(4deg);
+  }
+}
+
+@keyframes celebrate {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.02);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+@media (max-width: 420px) {
+  .card {
+    padding: 1.25rem 1rem;
+  }
+
+  .btn {
+    font-size: 0.96rem;
+    padding: 0.76rem 1.2rem;
+  }
+
+  .hero-meme {
+    width: 100%;
+  }
+
+  .hero-meme img {
+    height: clamp(160px, 30vh, 240px);
+  }
+
+  .hero-meme figcaption {
+    font-size: 0.78rem;
+  }
+
+
+  .music-player iframe {
+    height: 92px;
+  }
+
+  .music-title,
+  .music-link {
+    font-size: 0.76rem;
+  }
+}
